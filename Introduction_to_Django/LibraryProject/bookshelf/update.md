@@ -1,2 +1,2 @@
 from models import Book
-book = Book.object.update(title = ""Nineteen Eighty-Four"", author = "George Orwell",     publication_year = 1949)
+book = Book.objects.update(title = ""Nineteen Eighty-Four"", author = "George Orwell",     publication_year = 1949)
