@@ -7,7 +7,7 @@ def list_books(request):
     """Retrieves all books and renders a template displaying the list."""
     books = Book.objects.all() #Fetching all book instances from the db
     context = {'book_list': books} #Creating a context dictionary to store all the books from db
-    return render(request, 'relationship_app/list_books.html', context) 
+    return render(request, 'relationship_app/book_list.html', context) 
 
 class LibraryDetailView(DetailView):
     """Displays the details of a specific library and lists all books in that library."""
