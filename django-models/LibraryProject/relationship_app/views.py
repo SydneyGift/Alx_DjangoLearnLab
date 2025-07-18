@@ -3,7 +3,7 @@ from .models import Book
 from .models import Library
 from django.views.generic.detail import DetailView
 
-def book_list(request):
+def list_books(request):
     """Retrieves all books and renders a template displaying the list."""
     books = Book.objects.all() #Fetching all book instances from the db
     context = {'book_list': books} #Creating a context dictionary to store all the books from db
