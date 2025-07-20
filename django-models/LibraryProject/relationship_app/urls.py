@@ -22,7 +22,7 @@ from .views import list_books, LibraryDetailView
 urlpatterns = [
     path('admin/', admin.site.urls),
     # URL for listing all books
-    path('books/', book_list, name='book-list'),
+    path('books/', list_books, name='book-list'),
     # URL for viewing a specific library by its primary key (ID)
     path('libraries/<int:pk>/', LibraryDetailView.as_view(), name='library-detail')
 ]

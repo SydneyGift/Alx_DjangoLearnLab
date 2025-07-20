@@ -1,11 +1,6 @@
 from django.shortcuts import render
-from .models import Book
-from .models import Library
+from .models import Book, Library
 from django.views.generic.detail import DetailView
-
-#For use with tamplates
-from django.http import HttpResponse
-from django.template import loader
 
 
 def list_books(request):
@@ -22,15 +17,8 @@ class LibraryDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['book_list'] = Book.objects.filter(library=self.object)
+        # Get books associated with this library through the many-to-many relationship
+        context['book_list'] = self.object.books.all()
         return context
 
 
-#Implement Templates
-def books(request):
-    template = loader.get_template('list_books.html')
-    return HttpResponse(template.render())
-
-def library_Details(request):
-    template = loader.get_template('library_detail.html')
-    return HttpResponse(template.render())
