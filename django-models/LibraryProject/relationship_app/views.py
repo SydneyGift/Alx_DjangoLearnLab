@@ -1,25 +1,9 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from .models import Book, Library
 from django.views.generic.detail import DetailView
-
-
-def user_login(request):
-    """Handle user login authentication."""
-    if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('book-list')  # Redirect to book list after login
-    else:
-        form = AuthenticationForm()
-    return render(request, 'relationship_app/login.html', {'form': form})
 
 
 def user_register(request):
@@ -33,12 +17,6 @@ def user_register(request):
     else:
         form = UserCreationForm()
     return render(request, 'relationship_app/register.html', {'form': form})
-
-
-def user_logout(request):
-    """Handle user logout."""
-    logout(request)
-    return render(request, 'relationship_app/logout.html')
 
 
 @login_required
