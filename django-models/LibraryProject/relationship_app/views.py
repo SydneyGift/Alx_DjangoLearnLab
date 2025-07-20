@@ -6,7 +6,7 @@ from .models import Book, Library
 from django.views.generic.detail import DetailView
 
 
-def user_register(request):
+def register(request):
     """Handle user registration."""
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
