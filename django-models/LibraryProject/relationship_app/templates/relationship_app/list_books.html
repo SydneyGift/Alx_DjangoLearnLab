@@ -4,8 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <title>List of Books</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
+    <div class="auth-status">
+        {% if user.is_authenticated %}
+            <p>Welcome, {{ user.username }}! <a href="{% url 'logout' %}">Logout</a></p>
+        {% else %}
+            <p>You are not logged in. <a href="{% url 'login' %}">Login</a> or <a href="{% url 'register' %}">Register</a></p>
+        {% endif %}
+    </div>
+
     <h1>Books Available:</h1>
     <ul>
         {% for book in book_list %}

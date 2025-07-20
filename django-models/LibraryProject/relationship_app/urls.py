@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import list_books, LibraryDetailView
+from .views import list_books, LibraryDetailView, user_login, user_logout, user_register
 
 
 urlpatterns = [
@@ -24,5 +24,9 @@ urlpatterns = [
     # URL for listing all books
     path('books/', list_books, name='book-list'),
     # URL for viewing a specific library by its primary key (ID)
-    path('libraries/<int:pk>/', LibraryDetailView.as_view(), name='library-detail')
+    path('libraries/<int:pk>/', LibraryDetailView.as_view(), name='library-detail'),
+    # Authentication URLs
+    path('login/', user_login, name='login'),
+    path('logout/', user_logout, name='logout'),
+    path('register/', user_register, name='register')
 ]
