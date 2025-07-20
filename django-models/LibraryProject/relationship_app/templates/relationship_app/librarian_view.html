@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Librarian Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="auth-status">
+        {% if user.is_authenticated %}
+            <p>Welcome, {{ user.username }} (Librarian)! <a href="{% url 'logout' %}">Logout</a></p>
+        {% endif %}
+    </div>
+
+    <h1>Librarian Dashboard</h1>
+    <p>This page is only accessible to users with the Librarian role.</p>
+    
+    <h2>Librarian Actions:</h2>
+    <ul>
+        <li><a href="{% url 'book-list' %}">View All Books</a></li>
+        <li>Add New Books</li>
+        <li>Manage Book Loans</li>
+        <li>Handle Returns</li>
+    </ul>
+    
+    <h2>Quick Links:</h2>
+    <ul>
+        <li><a href="{% url 'admin-view' %}">Go to Admin View</a> (will only work if you have Admin role)</li>
+        <li><a href="{% url 'member-view' %}">Go to Member View</a> (will only work if you have Member role)</li>
+    </ul>
+</body>
+</html>

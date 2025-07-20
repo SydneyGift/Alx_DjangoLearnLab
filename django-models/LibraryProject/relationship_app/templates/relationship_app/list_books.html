@@ -11,6 +11,13 @@
     <div class="auth-status">
         {% if user.is_authenticated %}
             <p>Welcome, {{ user.username }}! <a href="{% url 'logout' %}">Logout</a></p>
+            <p>
+                Role-based views: 
+                <a href="{% url 'admin-view' %}">Admin</a> | 
+                <a href="{% url 'librarian-view' %}">Librarian</a> | 
+                <a href="{% url 'member-view' %}">Member</a>
+                (You'll only be able to access views matching your role)
+            </p>
         {% else %}
             <p>You are not logged in. <a href="{% url 'login' %}">Login</a> or <a href="{% url 'register' %}">Register</a></p>
         {% endif %}
