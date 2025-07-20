@@ -17,17 +17,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView
-from .views import list_books, LibraryDetailView, user_register
+from . import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # URL for listing all books
-    path('books/', list_books, name='book-list'),
+    path('books/', views.list_books, name='book-list'),
     # URL for viewing a specific library by its primary key (ID)
-    path('libraries/<int:pk>/', LibraryDetailView.as_view(), name='library-detail'),
+    path('libraries/<int:pk>/', views.LibraryDetailView.as_view(), name='library-detail'),
     # Authentication URLs
     path('login/', LoginView.as_view(template_name='relationship_app/login.html'), name='login'),
     path('logout/', LogoutView.as_view(template_name='relationship_app/logout.html'), name='logout'),
-    path('register/', user_register, name='register')
+    path('register/', views.user_register, name='register')
 ]
