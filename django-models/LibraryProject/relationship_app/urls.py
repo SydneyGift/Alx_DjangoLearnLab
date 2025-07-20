@@ -37,7 +37,7 @@ urlpatterns = [
     path('member-view/', views.member_view, name='member-view'),
     
     # Permission-enforced book operation URLs
-    path('books/add/', views.add_book, name='add-book'),
-    path('books/<int:pk>/edit/', views.edit_book, name='edit-book'),
+    path('add_book/', views.add_book, name='add-book'),
+    path('edit_book/<int:pk>/', views.edit_book, name='edit-book'),
     path('books/<int:pk>/delete/', views.delete_book, name='delete-book'),
 ]
