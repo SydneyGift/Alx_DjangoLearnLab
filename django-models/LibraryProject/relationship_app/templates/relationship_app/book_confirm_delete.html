@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Book</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="auth-status">
+        {% if user.is_authenticated %}
+            <p>Welcome, {{ user.username }}! <a href="{% url 'logout' %}">Logout</a></p>
+        {% endif %}
+    </div>
+
+    <h1>Delete Book</h1>
+    
+    <p>Are you sure you want to delete the book "{{ book.title }}" by {{ book.author.name }}?</p>
+    
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, Delete</button>
+    </form>
+    
+    <p><a href="{% url 'book-list' %}">No, go back to Book List</a></p>
+</body>
+</html>
