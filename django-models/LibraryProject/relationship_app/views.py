@@ -5,7 +5,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.decorators import permission_required
 from django.http import HttpResponseForbidden
-from .models import Book, Library, UserProfile, Author
+from .models import Book
+from .models import Library
+from .models import UserProfile
+from .models import Author
 from django.views.generic.detail import DetailView
 from django import forms
 
